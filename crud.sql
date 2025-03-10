@@ -1,56 +1,62 @@
 SET NAMES 'utf8';
 SET CHARACTER SET utf8;
 
-DROP DATABASE IF EXISTS crud;
-CREATE DATABASE crud;
-USE crud;
+-- Création de la base de données
+DROP DATABASE IF EXISTS `crud`;
+CREATE DATABASE `crud`; 
+USE `crud`;
 
-CREATE TABLE personnes (
-   id_personne INT PRIMARY KEY AUTO_INCREMENT,
+-- Création des tables
+CREATE TABLE personnes(
+   id INT PRIMARY KEY AUTO_INCREMENT,
    nom VARCHAR(50) NOT NULL,
    prenom VARCHAR(50) NOT NULL,
-   email VARCHAR(50) NOT NULL UNIQUE,
-   tel VARCHAR(50) NOT NULL,
-   mdp VARCHAR(50) NOT NULL,
-   admin BOOLEAN DEFAULT FALSE,
-   etudiant BOOLEAN DEFAULT FALSE,
-   prof BOOLEAN DEFAULT FALSE
+   email VARCHAR(50) NOT NULL,
+   mot_de_passe VARCHAR(120),
+   telephone VARCHAR(50),
+   admin BOOLEAN,
+   etudiant BOOLEAN,
+   professeur BOOLEAN
 );
 
-CREATE TABLE cours (
-   id_cour INT PRIMARY KEY AUTO_INCREMENT,
+CREATE TABLE cours(
+   id INT PRIMARY KEY AUTO_INCREMENT,
    nom VARCHAR(50) NOT NULL
 );
 
-CREATE TABLE inscription (
+CREATE TABLE inscriptions(
    id INT PRIMARY KEY AUTO_INCREMENT,
    id_personne INT,
-   id_cour INT,
-   FOREIGN KEY (id_personne) REFERENCES personnes(id_personne),
-   FOREIGN KEY (id_cour) REFERENCES cours(id_cour)
+   id_cours INT,
+   FOREIGN KEY(id_personne) REFERENCES personnes(id),
+   FOREIGN KEY(id_cours) REFERENCES cours(id)
 );
 
-INSERT INTO personnes (nom, prenom, email, tel, mdp, admin, etudiant, prof) VALUES
-('Dupont', 'Jean', 'jean.dupont@email.com', '0601020304', 'mdp123', FALSE, TRUE, FALSE),
-('Martin', 'Sophie', 'sophie.martin@email.com', '0602030405', 'mdp123', FALSE, TRUE, FALSE),
-('Bernard', 'Luc', 'luc.bernard@email.com', '0603040506', 'mdp123', FALSE, FALSE, TRUE),
-('Robert', 'Elise', 'elise.robert@email.com', '0604050607', 'mdp123', FALSE, TRUE, FALSE),
-('Petit', 'Nicolas', 'nicolas.petit@email.com', '0605060708', 'mdp123', FALSE, TRUE, FALSE),
-('Durand', 'Alice', 'alice.durand@email.com', '0606070809', 'mdp123', FALSE, FALSE, TRUE),
-('Lemoine', 'Paul', 'paul.lemoine@email.com', '0607080910', 'mdp123', FALSE, TRUE, FALSE),
-('Morel', 'Julie', 'julie.morel@email.com', '0608091011', 'mdp123', TRUE, FALSE, FALSE),
-('Simon', 'David', 'david.simon@email.com', '0609101112', 'mdp123', FALSE, TRUE, FALSE),
-('Laurent', 'Emma', 'emma.laurent@email.com', '0610111213', 'mdp123', FALSE, FALSE, TRUE);
+-- Remplissage des tables
+-- Insérer des données dans la table personnes
+INSERT INTO personnes (nom, prenom, email, mot_de_passe, telephone, admin, etudiant, professeur) VALUES
+('Dupont', 'Jean', 'jean.dupont@email.com', 'mdp123', '0601020304', TRUE, FALSE, FALSE),
+('Martin', 'Sophie', 'sophie.martin@email.com', 'mdp456', '0611223344', FALSE, TRUE, FALSE),
+('Durand', 'Paul', 'paul.durand@email.com', 'mdp789', '0622334455', FALSE, FALSE, TRUE),
+('Lefevre', 'Alice', 'alice.lefevre@email.com', 'mdp234', '0633445566', FALSE, TRUE, FALSE),
+('Morel', 'Luc', 'luc.morel@email.com', 'mdp345', '0644556677', FALSE, TRUE, FALSE),
+('Bernard', 'Elise', 'elise.bernard@email.com', 'mdp567', '0655667788', FALSE, FALSE, TRUE),
+('Roux', 'Hugo', 'hugo.roux@email.com', 'mdp678', '0666778899', FALSE, TRUE, FALSE),
+('Vincent', 'Marie', 'marie.vincent@email.com', 'mdp789', '0677889900', FALSE, FALSE, TRUE),
+('Fabre', 'Nicolas', 'nicolas.fabre@email.com', 'mdp890', '0688990011', FALSE, TRUE, FALSE),
+('Giraud', 'Camille', 'camille.giraud@email.com', 'mdp901', '0699001122', FALSE, TRUE, FALSE);
 
+-- Insérer des données dans la table cours
 INSERT INTO cours (nom) VALUES
-('Mathématiques'),
-('Informatique'),
-('Histoire'),
+('Mathematiques'),
 ('Physique'),
-('Anglais');
+('Informatique'),
+('Chimie'),
+('Histoire');
 
-INSERT INTO inscription (id_personne, id_cour) VALUES
-(1, 1), (1, 2), (1, 3), (2, 1), (2, 4), 
-(3, 2), (3, 5), (4, 1), (4, 3), (4, 5),
-(5, 2), (5, 4), (6, 1), (6, 5), (7, 3), 
-(7, 4), (8, 1), (9, 2), (9, 5), (10, 3);
+-- Insérer des données dans la table inscriptions
+INSERT INTO inscriptions (id_personne, id_cours) VALUES
+(2, 1), (2, 2), (3, 3), (4, 1), (4, 4),
+(5, 2), (5, 5), (6, 3), (6, 1), (7, 2),
+(7, 3), (8, 4), (8, 5), (9, 1), (9, 2),
+(9, 3), (10, 4), (10, 5), (3, 5), (6, 2);
