@@ -46,7 +46,7 @@
                 echo '<td>' . $data['admin'] . '</td>';
                 echo '<td>' . $data['etudiant'] . '</td>';
                 echo '<td>' . $data['professeur'] . '</td>';
-                echo '<td><a href="">Modifier</a>&nbsp;<a href="">Supprimer</a></td>';
+                echo '<td><a href="etudiant.php?id=' . $data['id'] . '" class="bouton vert">Modifier</a>&nbsp;<a href="etudiant-supprimer.php?id=' . $data['id'] . '" class="bouton rouge">Supprimer</a></td>';
                 echo '</tr>';
             }
         ?>

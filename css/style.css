@@ -62,4 +62,23 @@ form.etudiant input[type="submit"] {
     color: #fff;
     border: none;
     cursor: pointer;
+    border-radius: 5px;
+}
+
+a.bouton {
+    padding: 5px 10px;
+    background-color: #f00;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+a.bouton.bleu{
+    background-color: blue;
+}
+a.bouton.rouge{
+    background-color: red;
+}  
+a.bouton.vert{
+    background-color: green;
 }
