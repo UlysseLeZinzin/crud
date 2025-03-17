@@ -1,0 +1,33 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+.menu {
+    display: flex;
+    align-items: center;
+    padding: 10px 0;
+}
+
+.menu li {
+    list-style: none;
+    margin: 0 10px;
+}
+
+.menu a {
+    text-decoration: none;
+    color: #333;
+}
+
+.menu a:hover {
+    color: #f00;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+table td, table th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
