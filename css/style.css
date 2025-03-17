@@ -31,3 +31,35 @@ table td, table th {
     border: 1px solid #ddd;
     padding: 8px;
 }
+
+form.etudiant {
+    margin: 20px 0;
+}
+
+form.etudiant div{
+    margin: 10px 0;
+}
+
+form.etudiant div.checkbox{
+    margin: 20px 0;
+}
+
+form.etudiant label {
+    display: block;
+    width: 100px;
+}
+
+form.etudiant input[type="text"],
+form.etudiant input[type="email"],
+form.etudiant input[type="tel"],{
+    width: 200px;
+    padding: 5px;
+}
+
+form.etudiant input[type="submit"] {
+    padding: 5px 10px;
+    background-color: #f00;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
